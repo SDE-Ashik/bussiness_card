@@ -1,0 +1,79 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+
+    // Firebase plugins
+    id 'com.google.gms.google-services' // Required for Firebase services
+    id 'com.google.firebase.crashlytics' // Crashlytics for error reporting
+    id "dev.flutter.flutter-gradle-plugin" // Flutter Gradle Plugin (must be last)
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace = "com.example.busines_card_maker" // Replace with your unique namespace if necessary
+    compileSdk = 34 // Ensure this matches your project's target SDK
+
+    defaultConfig {
+        applicationId = "com.example.busines_card_maker" // Unique application ID
+        minSdk = 23 // Minimum SDK required for Firebase
+        targetSdk = 34 // Target SDK version
+        versionCode = 1 // Increment for new builds
+        versionName = "1.0.0" // Your app's version
+        multiDexEnabled true // Required for projects with many dependencies
+    }
+
+    signingConfigs {
+        release {
+            keyAlias = keystoreProperties['keyAlias']
+            keyPassword = keystoreProperties['keyPassword']
+            storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword = keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false // Set to true and configure ProGuard for production
+            shrinkResources false // Set to true for production to reduce APK size
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    // Firebase dependencies
+    implementation platform('com.google.firebase:firebase-bom:32.0.0') // Firebase BOM for compatibility
+    implementation 'com.google.firebase:firebase-analytics' // Analytics
+    implementation 'com.google.firebase:firebase-dynamic-links' // Dynamic Links
+    implementation 'com.google.firebase:firebase-crashlytics' // Crashlytics
+    implementation 'com.google.firebase:firebase-auth' // Firebase Authentication
+    implementation 'com.google.firebase:firebase-firestore' // Firestore Database
+
+    // MultiDex
+    implementation 'androidx.multidex:multidex:2.0.1'
+}
+
+// Apply the Google Services plugin for Firebase
+apply plugin: 'com.google.gms.google-services'

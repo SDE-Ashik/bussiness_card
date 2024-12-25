@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "553816829513",
+    "project_id": "business-card-7206b",
+    "storage_bucket": "business-card-7206b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553816829513:android:2cf3db79cf914ca68fd998",
+        "android_client_info": {
+          "package_name": "com.example.busines_card_maker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553816829513-9emkbm1ek6scpulb2kubbb0vjofmcbo9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.busines_card_maker",
+            "certificate_hash": "569f902eed56bafd5620e3bf2b380f30e61e0e44"
+          }
+        },
+        {
+          "client_id": "553816829513-h2k8204kbet7g45b3r5ku84of81hi3nk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_9ivTiBtzkLZXyXjHDFt465rDPFmQJJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553816829513-h2k8204kbet7g45b3r5ku84of81hi3nk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
